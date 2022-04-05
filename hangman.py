@@ -3,18 +3,44 @@ import pyttsx3
 fala = pyttsx3.init()
 
 fala.say("Olá humano, bem-vido ao jogo da Forca! Por favor, digite a palavra que você deseja adivinhar"
-", mas sem que seus amiginhos vejam")
+", mas sem que seus amiguinhos vejam")
 fala.runAndWait()
 
 palavra = input("Digite a palavra: ")
+lista_palavra = list(palavra)
+acertadas = []
+erros = 0
+acertou = False
 
-fala.say("Agora espere seus amiginhos adivinhar a palavra, ou errar kkkkkk")
+fala.say("Agora espere seus amiguinhos adivinhar a palavra, ou errar kkkkkk")
 fala.runAndWait()
 
 print("Fica a dica a palavra tem {} letras".format(len(palavra)))
 
-erros = 0
+for i in range(0, len(palavra)):
+    lista_palavra.append("*")
 
+
+while acertou == False:
+    letra = str(input("Digite uma letra: "))
+
+    for i in range(0, len(lista_palavra)):
+        if letra == lista_palavra[i]:
+            acertadas[i] = letra
+        
+        print(acertadas[i])
+    
+    acertou = True
+    
+
+    for x in range(0, len(acertadas)):
+        if acertadas[x] == "*":
+            acertou = False
+            break
+        
+
+
+'''
 while erros <5:
     letra = input("Digite uma letra: ")
     if letra in palavra:
@@ -28,32 +54,4 @@ while erros <5:
             fala.say("Você perdeu")
             fala.runAndWait()
             break
-
-'''
-print("Palavra com 4 letras")
-print("todo mundo já falou ou ouviu falar")
-print("É um dos maiores temas de filmes e séries")
-i = input("Digite uma letra ou a palavra que acha: ")
-c = 0
-
-while c < 5:
-    if i == "amor" or  i == "Amor":
-        print("Você acertou!")
-
-    elif i == "a":
-        print("a***")
-        c = c + 1
-    elif i == "m":
-        print("*m***")
-        c = c + 1
-    elif i == "o":
-        print("**o*")
-        c = c + 1
-    elif i == "r":
-        print("***r")
-        c = c + 1
-    else:
-        print("Sua cabeça já está na corda")
-        i = input("Digite uma letra ou a palavra que acha: ")
-        c = c + 1
 '''
